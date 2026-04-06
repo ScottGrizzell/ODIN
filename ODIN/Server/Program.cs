@@ -1,9 +1,17 @@
+using Server.Data;
 using Server.Interfaces;
 using Server.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<OdinDbContext>(options =>
+options.UseSqlServer(connectionString));
+
 builder.Services.AddScoped<IOffenderService, MockOffenderService>();
+
 
 // Add services to the container.
 builder.Services.AddControllers();
