@@ -7,6 +7,7 @@
         public string LastName { get; set; } = "";
         public DateOnly DOB { get; set; }
         public decimal FeesOwed { get; set; }
+        public string? Notes { get; set; }
         public string Status { get; set; } = "Active";
     }
 }

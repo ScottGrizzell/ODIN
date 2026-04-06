@@ -14,11 +14,9 @@ namespace Server.Data.Entities
         [Required, MaxLength(50)]
         public string LastName { get; set; } = string.Empty;
         public DateOnly DOB { get; set; }
-
         public decimal FeesOwed { get; set; }
-
         public string Status { get; set; } = "Active";
-
+        public string? Notes { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
 
