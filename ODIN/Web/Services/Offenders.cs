@@ -12,9 +12,11 @@ namespace Web.Services
             _httpClient = httpClient;
         }
 
-        //public async Task<List<OffenderDto>> SearchOffenders(string? first, string? last)
-        //{
-        //    var url = $"api/"
-        //}
+        public async Task<List<OffenderDto>> SearchOffenders(string? first, string? last)
+        {
+            var url = $"/api/reverseProxyOffenders?firstName={first}&lastName={last}";
+            
+            return await _httpClient.GetFromJsonAsync<List<OffenderDto>>(url) ?? [];
+        }
     }
 }
