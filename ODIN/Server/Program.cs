@@ -1,3 +1,10 @@
+/*
+Author: Scott Grizzell
+Date: 4/6/2026
+Desc: Main backend server for processing requests from frontend. Handles querying 
+of SQL db. 
+ */
+
 using Server.Data;
 using Server.Interfaces;
 using Server.Services;

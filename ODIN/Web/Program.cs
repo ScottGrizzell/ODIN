@@ -1,3 +1,10 @@
+/*
+Author: Scott Grizzell
+Date: 4/6/2026
+Desc: Main UI for ODIN application allowing users to query and update data on the countys
+various justice involved individuals.
+ */
+
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Web;
