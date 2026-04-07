@@ -22,12 +22,20 @@ namespace Server.Controllers
         public async Task<ActionResult<OffenderDto>> GetOffender(int id)
         {
             var offender = await _offenderService.GetOffenderByIdAsync(id);
-            if(offender == null)
+            if (offender == null)
             {
                 return NotFound();
             }
             return Ok(offender);
         }
-        
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<OffenderDto>>> GetOffenderByName([FromQuery] string? firstName, [FromQuery] string? lastName)
+        {
+            var results = await _offenderService.SearchOffenderAsync(firstName, lastName);
+
+            return Ok(results);
+        }
+
     }
 }

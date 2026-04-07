@@ -40,11 +40,11 @@ namespace Server.Services
             var query = _context.Offenders.AsQueryable();
             if (!string.IsNullOrEmpty(firstName))
             {
-                query = query.Where(x => x.FirstName.Contains(firstName, StringComparison.OrdinalIgnoreCase));
+                query = query.Where(x => x.FirstName.Contains(firstName));
             }
             if (!string.IsNullOrEmpty(lastName))
             {
-                query = query.Where(x => x.LastName.Contains(lastName, StringComparison.OrdinalIgnoreCase));
+                query = query.Where(x => x.LastName.Contains(lastName));
             }
 
             return await query.Select(o => new OffenderDto
