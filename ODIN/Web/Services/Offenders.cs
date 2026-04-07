@@ -18,5 +18,12 @@ namespace Web.Services
             
             return await _httpClient.GetFromJsonAsync<List<OffenderDto>>(url) ?? [];
         }
+
+        public async Task<OffenderDto> GetOffenderById(int id)
+        {
+            var url = $"/api/reverseProxyOffenders/{id}";
+
+            return await _httpClient.GetFromJsonAsync<OffenderDto>(url) ?? new OffenderDto(); 
+        }
     }
 }

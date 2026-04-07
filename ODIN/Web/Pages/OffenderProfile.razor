@@ -1,5 +1,52 @@
-﻿<h3>OffenderPRofile</h3>
+﻿@page "/offender/{Id:int}"
+@inject Offenders OffenderService
+
+<div class="container mt-4">
+    @if (offender == null)
+    {
+        <div class="spinner-border" role="status"></div>
+    }
+    else
+    {
+        <h2>@offender.LastName, @offender.FirstName</h2>
+        <p class="text-muted">ID: @offender.Id | DOB: @offender.DOB.ToShortDateString()</p>
+
+        <ul class="nav nav-tabs mt-4" id="profileTabs" role="tablist">
+            <li class="nav-item">
+                <button class="nav-link @(activeTab == "cases" ? "active" : "")" @onclick='() => activeTab = "cases"'>Cases</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link @(activeTab == "fees" ? "active" : "")" @onclick='() => activeTab = "fees"'>Fees</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link @(activeTab == "payments" ? "active" : "")" @onclick='() => activeTab = "payments"'>Payments</button>
+            </li>
+        </ul>
+
+        <div class="tab-content border-start border-end border-bottom p-4 bg-white">
+            @if (activeTab == "cases")
+            {
+                <p>Cases from Doc 400 will go here...</p>
+            }
+            @if (activeTab == "fees")
+            {
+                <p>Fees from Enterprise One will go here...</p>
+            }
+            @if (activeTab == "payments")
+            {
+                <p>Local ODIN Payment history will go here...</p>
+            }
+        </div>
+    }
+</div>
 
 @code {
+    [Parameter] public int Id { get; set; }
+    private OffenderDto? offender;
+    private string activeTab = "cases";
 
+    protected override async Task OnInitializedAsync()
+    {
+        offender = await OffenderService.GetOffenderById(Id);
+    }
 }
