@@ -1,9 +1,13 @@
 [
   {
-    "Name": "Gateway Testing",
+    "Name": "UI Testing",
     "Projects": [
       {
         "Path": "Server\\Server.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Web\\Web.csproj",
         "Action": "Start"
       },
       {

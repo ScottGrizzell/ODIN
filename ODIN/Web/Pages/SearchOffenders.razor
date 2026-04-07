@@ -1,0 +1,68 @@
+﻿@page "/search"
+@inject Offenders OffenderService
+
+<PageTitle>Offender Search</PageTitle>
+
+<div class="container mt-4">
+    <h3 class="mb-4">ODIN - Offender Search</h3>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label">First Name</label>
+                    <input @bind="firstName" class="form-control" placeholder="Search first name..." />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Last Name</label>
+                    <input @bind="lastName" class="form-control" placeholder="Search last name..." />
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button class="btn btn-primary w-100" @onclick="HandleSearch">
+                        <i class="bi bi-search"></i> Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (results != null)
+    {
+        <table class="table table-hover mt-3">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID #</th>
+                    <th>Name</th>
+                    <th>DOB</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var offender in results)
+                {
+                    <tr>
+                        <td>@offender.Id</td>
+                        <td>@offender.LastName, @offender.FirstName</td>
+                        <td>@offender.DOB.ToShortDateString()</td>
+                        <td><span class="badge bg-success">@offender.Status</span></td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-secondary">View Profile</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@code {
+    private string? firstName;
+    private string? lastName;
+    private List<OffenderDto>? results;
+
+    private async Task HandleSearch()
+    {
+        results = await OffenderService.SearchOffenders(firstName, lastName);
+    }
+}
