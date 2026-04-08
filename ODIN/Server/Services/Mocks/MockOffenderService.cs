@@ -1,7 +1,7 @@
 ﻿using Server.Interfaces;
 using Shared;
 
-namespace Server.Services
+namespace Server.Services.Mocks
 {
     public class MockOffenderService : IOffenderService
     {
