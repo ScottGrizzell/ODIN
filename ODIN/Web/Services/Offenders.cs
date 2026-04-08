@@ -31,5 +31,10 @@ namespace Web.Services
         {
             return await _httpClient.GetFromJsonAsync<List<CaseDto>>($"api/reverseProxyCases/{offenderId}") ?? [];
         }
+
+        public async Task<List<FeeDto>> GetFees(int offenderId)
+        {
+            return await _httpClient.GetFromJsonAsync<List<FeeDto>>($"api/reverseProxyFees/{offenderId}") ?? [];
+        }
     }
 }

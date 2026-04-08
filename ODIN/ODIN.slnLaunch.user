@@ -13,6 +13,10 @@
       {
         "Path": "Gateway\\Gateway.csproj",
         "Action": "Start"
+      },
+      {
+        "Path": "Legacy.EnterpriseOne\\Legacy.EnterpriseOne.csproj",
+        "Action": "Start"
       }
     ]
   }

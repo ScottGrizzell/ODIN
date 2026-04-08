@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 18
-VisualStudioVersion = 18.1.11312.151 d18.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36908.2 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{71D96A55-5EBB-47E6-933F-4453567E35EE}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{09308BF9-A148-4A5F-963C-B152EEDD8D1A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "Gateway\Gateway.csproj", "{A11BB708-200C-4F30-9FD9-14A1C3FECC02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legacy.EnterpriseOne", "Legacy.EnterpriseOne\Legacy.EnterpriseOne.csproj", "{DC75D7E7-A933-ECAF-725D-03EA65FEC58E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A11BB708-200C-4F30-9FD9-14A1C3FECC02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A11BB708-200C-4F30-9FD9-14A1C3FECC02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A11BB708-200C-4F30-9FD9-14A1C3FECC02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC75D7E7-A933-ECAF-725D-03EA65FEC58E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC75D7E7-A933-ECAF-725D-03EA65FEC58E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC75D7E7-A933-ECAF-725D-03EA65FEC58E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC75D7E7-A933-ECAF-725D-03EA65FEC58E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
