@@ -1,5 +1,6 @@
 ﻿@page "/offender/{Id:int}"
 @inject Offenders OffenderService
+@using Web.Components
 
 <div class="container mt-4">
     @if (offender == null)
@@ -26,7 +27,7 @@
         <div class="tab-content border-start border-end border-bottom p-4 bg-white">
             @if (activeTab == "cases")
             {
-                <p>Cases from Doc 400 will go here...</p>
+                <CasesTab OffenderId="Id" />
             }
             @if (activeTab == "fees")
             {

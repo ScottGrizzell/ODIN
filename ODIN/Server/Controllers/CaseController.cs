@@ -1,12 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Server.Interfaces;
+using Shared;
 
 namespace Server.Controllers
 {
-    public class CaseController : Controller
+    [ApiController]
+    [Route("api/[controller]")]
+    public class CaseController : ControllerBase
     {
-        public IActionResult Index()
+        private readonly IDoc400Service _caseService;
+
+        public CaseController(IDoc400Service caseService)
         {
-            return View();
+            _caseService = caseService;
+        }
+
+        [HttpGet("offender/{offenderId}")]
+        public async Task<ActionResult<List<CaseDto>>> GetCases(int offenderId)
+        { 
+            return Ok(await _caseService.GetCaseByOffenderId(offenderId));
         }
     }
 }

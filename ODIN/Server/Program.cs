@@ -9,6 +9,7 @@ using Server.Data;
 using Server.Interfaces;
 using Server.Services;
 using Microsoft.EntityFrameworkCore;
+using Server.Services.Mocks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ options.UseSqlServer(connectionString));
 
 // builder.Services.AddScoped<IOffenderService, MockOffenderService>();
 builder.Services.AddScoped<IOffenderService, SqlOffenderService>();
+builder.Services.AddScoped<IDoc400Service, MockDoc400Service>();
 
 // Add services to the container.
 builder.Services.AddControllers();
