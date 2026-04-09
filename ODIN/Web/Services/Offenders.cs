@@ -15,7 +15,9 @@ namespace Web.Services
 
         public async Task<List<OffenderDto>> SearchOffenders(string? first, string? last)
         {
-            var url = $"/api/reverseProxyOffenders?firstName={first}&lastName={last}";
+            var sanitizedFirst = Uri.EscapeDataString(first ?? string.Empty);
+            var sanitizedLast = Uri.EscapeDataString(last ?? string.Empty);
+            var url = $"/api/reverseProxyOffenders?firstName={sanitizedFirst}&lastName={sanitizedLast}";
             
             return await _httpClient.GetFromJsonAsync<List<OffenderDto>>(url) ?? [];
         }
@@ -29,12 +31,12 @@ namespace Web.Services
 
         public async Task<List<CaseDto>> GetOffenderCases(int offenderId)
         {
-            return await _httpClient.GetFromJsonAsync<List<CaseDto>>($"api/reverseProxyCases/{offenderId}") ?? [];
+            return await _httpClient.GetFromJsonAsync<List<CaseDto>>($"/api/reverseProxyCases/{offenderId}") ?? [];
         }
 
         public async Task<List<FeeDto>> GetFees(int offenderId)
         {
-            return await _httpClient.GetFromJsonAsync<List<FeeDto>>($"api/reverseProxyFees/{offenderId}") ?? [];
+            return await _httpClient.GetFromJsonAsync<List<FeeDto>>($"/api/reverseProxyFees/{offenderId}") ?? [];
         }
     }
 }

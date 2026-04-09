@@ -10,11 +10,24 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Web;
 using Web.Services;
 
+
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7152") });
-builder.Services.AddScoped<Offenders>();
+builder.Services.AddTransient<JwtAuthorizationHandler>();
+
+builder.Services.AddHttpClient("GatewayClient", client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7152"); 
+})
+.AddHttpMessageHandler<JwtAuthorizationHandler>();
+
+builder.Services.AddScoped(sp =>
+    {
+        var httpClientFactory = sp.GetRequiredService<IHttpClientFactory>();
+        var client = httpClientFactory.CreateClient("GatewayClient");
+        return new Offenders(client);
+    });
 
 await builder.Build().RunAsync();
