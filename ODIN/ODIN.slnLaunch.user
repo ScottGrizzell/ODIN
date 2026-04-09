@@ -17,6 +17,10 @@
       {
         "Path": "Legacy.EnterpriseOne\\Legacy.EnterpriseOne.csproj",
         "Action": "Start"
+      },
+      {
+        "Path": "Identity\\Identity.csproj",
+        "Action": "Start"
       }
     ]
   }
